@@ -83,6 +83,7 @@ chmod +x eclipse.sh
 ```
 exit
 ```
+```
 docker exec -ti cspqaes bash eclipse.sh
 ```
 
