@@ -156,12 +156,6 @@ cp MATLABLIC/license_standalone.lic /usr/local/MATLAB/R2018b/bin/
 cp -rf  MATLABLIC/R2018b/bin/glnxa64/* /usr/local/MATLAB/R2018b/bin/glnxa64/
 ```
 ```
-docker restart  cspqaes 
-```
-```
-docker exec -it cspqaes bash
-```
-```
 cd /usr/local/MATLAB/R2018b/bin/
 ```
 ```
