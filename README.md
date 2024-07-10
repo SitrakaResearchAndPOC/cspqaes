@@ -43,7 +43,7 @@ tar -xvf eclipse-inst-jre-linux64.tar.gz
 cd eclipse-installer/
 ```
 ```
-sudo ./eclipse-inst
+./eclipse-inst
 ```
 Select "eclipse IDE for java developpers" </br>
 Choose one options of jdk and click to install, should be take a little bit time </br>
