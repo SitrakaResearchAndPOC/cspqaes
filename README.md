@@ -195,6 +195,7 @@ exit
 ```
 docker restart cspqaes 
 ```
+* saving images if you need
 ```
 docker commit cspqaes  cspqaes:v1 
 ```
