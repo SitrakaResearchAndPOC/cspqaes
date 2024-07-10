@@ -2,6 +2,9 @@
 Preparing compressing sensing over matlab and pqaes over python to be modulated with hackrf
 * Downloading the image
 ```
+sudo su
+```
+```
 docker image pull ubuntu:18.04
 ```
 ```
@@ -10,9 +13,9 @@ docker images
 ```
 docker image ps
 ```
-change name_session with realusername , for me it's dast 
+change name_session with realusername , for me it's dast, use this [link](https://stackoverflow.com/questions/3522341/identify-user-in-a-bash-script-called-by-sudo)
 ```
-docker run -itd --privileged --cap-add=ALL -v /dev/bus/usb:/dev/bus/usb -v /tmp/.X11-unix:/tmp/.X11-unix:ro -v $XAUTHORITY:/home/user/.Xauthority:ro -v /media/name_session/:/media:ro --net=host --env="DISPLAY=$DISPLAY" --env="LC_ALL=C.UTF-8" --env="LANG=C.UTF-8"  --name  cspqaes ubuntu:18.04
+docker run -itd --privileged --cap-add=ALL -v /dev/bus/usb:/dev/bus/usb -v /tmp/.X11-unix:/tmp/.X11-unix:ro -v $XAUTHORITY:/home/user/.Xauthority:ro -v /media/$SUDO_USER/:/media:ro --net=host --env="DISPLAY=$DISPLAY" --env="LC_ALL=C.UTF-8" --env="LANG=C.UTF-8"  --name  cspqaes ubuntu:18.04
 ```
 ```
 docker restart cspqaes
