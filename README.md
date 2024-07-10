@@ -15,9 +15,6 @@ change name_session with realusername , for me it's dast
 docker run -itd --privileged --cap-add=ALL -v /dev/bus/usb:/dev/bus/usb -v /tmp/.X11-unix:/tmp/.X11-unix:ro -v $XAUTHORITY:/home/user/.Xauthority:ro -v /media/name_session/:/media:ro --net=host --env="DISPLAY=$DISPLAY" --env="LC_ALL=C.UTF-8" --env="LANG=C.UTF-8"  --name  cspqaes ubuntu:18.04
 ```
 ```
-docker run -itd --privileged --cap-add=ALL -v /dev/bus/usb:/dev/bus/usb -v /tmp/.X11-unix:/tmp/.X11-unix:ro -v $XAUTHORITY:/home/user/.Xauthority:ro -v /media/name_session/:/media:ro --net=host --env="DISPLAY=$DISPLAY" --env="LC_ALL=C.UTF-8" --env="LANG=C.UTF-8"  --name cspqaes:v1 cspqaes 
-```
-```
 docker restart cspqaes
 ```
 ```
