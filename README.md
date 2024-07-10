@@ -275,6 +275,10 @@ python3 main.py -p p512  -m scaled -s wd2 -v -a csidh -e 5
 ```
 python3 main.py -p p512  -m unscaled -s wd2 -v -a csurf -e 5
 ```
+```
+cd ..
+```
+
 * Installing sibc 
 ```
 git clone https://github.com/JJChiDguez/sibc
