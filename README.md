@@ -142,8 +142,7 @@ cd /usr/local/MATLAB/R2018b/bin/
 ```
 ./matlab
 ```
-Find the certificate at /usr/local/MATLAB/R2018b/bin/ as license_standalone.lic
-```
+Find the certificate at /usr/local/MATLAB/R2018b/bin/ as license_standalone.lic </br>
 create bash scripting for matlab
 ```
 nano matlab.sh
