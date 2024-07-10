@@ -190,6 +190,9 @@ docker exec -ti cspqaes bash matlab.sh
 ```
 If problem displaying plot exist, restart docker : 
 ```
+exit 
+```
+```
 docker restart cspqaes 
 ```
 ```
