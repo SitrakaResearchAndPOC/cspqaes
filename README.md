@@ -27,7 +27,7 @@ docker exec -ti cspqaes bash
 apt update
 ```
 ```
-apt install ubuntu-desktop wget
+apt install ubuntu-desktop wget nano zip
 ```
 * Installing [ECLIPSE](https://www.tecmint.com/eclipse-install-ubuntu/) or [ECLIPSE2](https://www.makeuseof.com/install-eclipse-ide-on-linux/)
 ```
