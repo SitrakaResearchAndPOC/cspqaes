@@ -58,7 +58,7 @@ sudo ./eclipse-inst
 ```
 If problem, find the real name of java install directory : ls /root/eclipse/java-2023-06
 ```
-cd /root/eclipse/java-2023-06/java-2023-06/eclipse/
+cd /root/eclipse/java-2023-06/eclipse/
 ```
 ```
 ./eclipse
@@ -71,7 +71,7 @@ copy the script bash and save on eclipse.sh
 ```
 #!/bin/sh
 echo "launching eclipse"
-cd /root/eclipse/java-2023-06/java-2023-06/eclipse/
+cd /root/eclipse/java-2023-06/eclipse/
 ./eclipse
 ```
 ```
