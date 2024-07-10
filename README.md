@@ -115,6 +115,31 @@ cd INSTALL
 ```
 bash install
 ```
+Enter the right key : </br>
+For me , it's : 
+```
+09806-07443-53955-64350-21751-41297
+```
+```
+1) standalone:
+- Install choosing the option "Use a File Installation Key" and supply the following FIK
+	09806-07443-53955-64350-21751-41297
+- To install Matlab Production Server,using this
+	40236-45817-26714-51426-39281
+- Use license_standalone.lic to activate,
+  or copy license_standalone.lic to %installdir%\licenses\ ,and run matlab without activation
+- after the installation finishes copy the folders to %installdir% to overwriting the originally installed files
+
+2) floating license (network license server):
+- Install choosing the option "Use a File Installation Key" and supply the following FIK
+	31095-30030-55416-47440-21946-54205
+- To install Matlab Production Server,using this
+	57726-51709-20682-42954-31195
+- Use license_server.lic when asked
+- after the installation finishes copy the folders to %installdir% to overwriting the originally installed files
+```
+INSTALLATION FILE IS IN : /usr/local/MATLAB/R2018b </br>
+use this command for changing path : 
 ```
 wget https://raw.githubusercontent.com/SitrakaResearchAndPOC/MATLAB_R2018b_Linux64_Crack/main/MATLAB_R2018b_Linux64_Crack.zip
 ```
