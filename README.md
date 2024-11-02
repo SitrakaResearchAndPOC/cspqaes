@@ -88,6 +88,12 @@ pip3 install dh click numpy progress matplotlib networkx stdeb setuptools-scm se
 apt-get install python-all
 ```
 ```
+mkdir isogenies
+```
+```
+cd isogenies
+```
+```
 git clone https://github.com/Krijn-math/Constant-time-CSURF-CRADS
 ```
 ```
