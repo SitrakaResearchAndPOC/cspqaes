@@ -245,7 +245,7 @@ tail -f test_fo.txt
 python3 PQAES.py
 ```
 ```
-cd ../..
+cd ../../..
 ```
 
 
