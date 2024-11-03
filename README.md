@@ -160,7 +160,7 @@ python3 sibc -p p512 -f hvelu -a csidh -s df -e 10 csidh-main
 sibc -p p512 -f hvelu -a csidh -s df -e 10 csidh-main
 ```
 ```
-cd ../..
+cd ..
 ```
 * TESTING CRYPTODOME
 Testing :
