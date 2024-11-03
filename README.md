@@ -266,16 +266,7 @@ cd eclipse-installer/
 ./eclipse-inst
 ```
 Select "eclipse IDE for java developpers" </br>
-Choose one options of jdk and click to install, should be take a little bit time </br>
-```
-tar -xvf eclipse-inst-jre-linux64.tar.gz
-```
-```
-cd eclipse-installer/
-```
-```
-sudo ./eclipse-inst
-```
+Choose one options of jdk and click to install, should be take a little bit time </br> </br> 
 If problem, find the real name of java install directory : ls /root/eclipse/java-2023-06
 ```
 cd /root/eclipse/java-2023-06/eclipse/
@@ -283,6 +274,7 @@ cd /root/eclipse/java-2023-06/eclipse/
 ```
 ./eclipse
 ```
+Create new project in default workspace and create ClassMain with System.out.println("hello world"); for testing </br> </br>
 create bash scripting
 ```
 nano eclipse.sh
