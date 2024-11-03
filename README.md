@@ -244,6 +244,9 @@ tail -f test_fo.txt
 ```
 python3 PQAES.py
 ```
+```
+cd ../..
+```
 
 
 * Installing [ECLIPSE](https://www.tecmint.com/eclipse-install-ubuntu/) or [ECLIPSE2](https://www.makeuseof.com/install-eclipse-ide-on-linux/)
