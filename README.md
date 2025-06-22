@@ -51,10 +51,10 @@ hackrf_info
 apt update
 ```
 ```
-apt-get install python3-pip wget
+apt install python3-pip wget
 ```
 ```
-apt-get install python3-pip
+apt install python3-pip
 ```
 ```
 pip3 install progressbar
@@ -90,7 +90,7 @@ apt install -y dh-python python3-click python3-progress  python3-numpy python3-m
 pip3 install dh click numpy progress matplotlib networkx stdeb setuptools-scm setuptools
 ```
 ```
-apt-get install python-all
+apt install python-all
 ```
 ```
 mkdir isogenies
