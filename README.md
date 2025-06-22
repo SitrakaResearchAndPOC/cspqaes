@@ -498,7 +498,8 @@ For finding eclise commande : </br>
 In RUN / RUN CONFIGURATIONS... / SHOW COMMAND LINE (in eclpise) </br>
 COPY LONGUE JAVA COMMAND IN TXT DOCUMENT Something Like  :  </br>
 /root/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.15.v20250423-0846/jre/bin/java </br>
-
+</br>
+Exit all eclipse GUI </br>
 ```
 cd /usr/local/MATLAB/R2018b/bin/
 ```
@@ -509,7 +510,7 @@ wget https://raw.githubusercontent.com/SitrakaResearchAndPOC/cspqaes/refs/heads/
 unzip matlabCS_Linux.zip
 ```
 ```
-matlabCS_Linux
+cd matlabCS_Linux
 ```
 ```
 nano javaCipheringLauncher.m
