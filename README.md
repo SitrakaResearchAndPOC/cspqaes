@@ -292,6 +292,9 @@ cd /root/eclipse/java-2023-06/eclipse/
 Create new project in default workspace and create ClassMain with System.out.println("hello world"); for testing </br> </br>
 create bash scripting
 ```
+cd /
+```
+```
 nano eclipse.sh
 ```
 copy the script bash and save on eclipse.sh 
