@@ -341,6 +341,9 @@ utf-8''r2018b_glnxa64_dvd2.iso </br>
 Mounting point is : /media/name_session/name_dvd </br>
 for me : name_session it's dast et name_dvd are MATHWORKS_R2018B et MATHWORKS_R2018B1 </br>
 ```
+exit
+```
+```
 docker stop cspqaes
 ```
 ```
