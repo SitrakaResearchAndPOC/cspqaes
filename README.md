@@ -371,6 +371,7 @@ cd INSTALL
 ```
 bash install
 ```
+Use installation for key </br>
 Enter the right key : </br>
 For me , it's : 
 ```
