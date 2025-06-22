@@ -429,7 +429,8 @@ docker commit cspqaes  cspqaes:v1
 
 ```
 
-
+For finding eclise commande : 
+In RUN / RUN CONFIGURATIONS... / SHOW COMMAND LINE (in eclpise)
 
 
 * BONUS , INSTALLING ECLIPSE ON REAL MACHINE NOT DOCKER
