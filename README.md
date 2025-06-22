@@ -454,19 +454,39 @@ xhost +
 ```
 docker exec -ti cspqaes bash matlab.sh
 ```
+Removing installer source for matlab
+```
+docker exec -ti cspqaes bash
+```
+```
+rm -rf MATLAB
+```
 If problem displaying plot exist, restart docker : 
 ```
 exit 
 ```
+xhost +
 ```
 docker restart cspqaes 
 ```
+
+* Insertion of code version 1
+```
+cd /root/eclipse-workspace/
+```
+```
+wget https://raw.githubusercontent.com/SitrakaResearchAndPOC/cspqaes/refs/heads/main/CS_v1/matlabCS_Linux.zip
+```
+```
+unzip matlabCS_Linux.zip
+```
+
+
 * saving images if you need
 ```
 docker commit cspqaes  cspqaes:v1 
 ```
-* IMAGE CS-PQAES v1 (DIFF BETWEEN LINUX AND WINDOWS)
-
+* DIFF BETWEEN LINUX AND WINDOWS
 Look at diff file </br>
 MODIFICATION 1 : partie_1.m
 ```
