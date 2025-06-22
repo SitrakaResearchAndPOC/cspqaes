@@ -229,7 +229,10 @@ python3 AES.py -e test.txt -c 128
 ```
 python3 AES.py -d test.txt.aes -c 128
 ```
-Name the decrypted file as test_dec.txt
+</br>
+Tape not overwrite </br>
+The name of decrypted file as test_dec.txt </br>
+</br
 ```
 tail -f test_dec.txt
 ```
@@ -242,6 +245,10 @@ python3 FO.py -e test.txt -a sha256 -k bob.priv
 ```
 python3 FO.py -d test.txt.fo -a sha256 -k bob.priv 
 ```
+</br>
+Tape not overwrite </br>
+The name of decrypted file as test_fo.txt </br>
+</br
 ```
 tail -f test_fo.txt
 ```
