@@ -319,6 +319,9 @@ docker exec -ti cspqaes bash eclipse.sh
 
 * INSTALLING MATLAB 2018
 ```
+xhost +
+```
+```
 docker exec -ti cspqaes bash 
 ```
 
