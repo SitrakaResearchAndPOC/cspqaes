@@ -465,7 +465,9 @@ If problem displaying plot exist, restart docker :
 ```
 exit 
 ```
+```
 xhost +
+```
 ```
 docker restart cspqaes 
 ```
@@ -487,9 +489,16 @@ Launch eclipse
 ```
 bash eclipse.sh
 ```
+Import eclipse project</br></br>
+FILE / IMPORT / GENERAL / EXISTING PROJECT INTO WORKSPACE / BROWSE / SELECT Article4_QuantumCipherMode2  / OPEN
+</br>
+
+
 For finding eclise commande : </br>
 In RUN / RUN CONFIGURATIONS... / SHOW COMMAND LINE (in eclpise) </br>
-Full command java should be replaced as sprintf on MATLAB code 
+COPY LONGUE JAVA COMMAND IN TXT DOCUMENT Something Like  :  </br>
+/root/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.15.v20250423-0846/jre/bin/java </br>
+
 ```
 cd /usr/local/MATLAB/R2018b/bin/
 ```
@@ -499,6 +508,24 @@ wget https://raw.githubusercontent.com/SitrakaResearchAndPOC/cspqaes/refs/heads/
 ```
 unzip matlabCS_Linux.zip
 ```
+```
+matlabCS_Linux
+```
+```
+nano javaCipheringLauncher.m
+```
+Full command java should be replaced as sprintf on MATLAB code by PASTING LONGUE JAVA COMMAND IN TXT DOCUMENT 
+```
+nano javaDecipheringLauncher.m
+```
+Full command java should be replaced as sprintf on MATLAB code by PASTING LONGUE JAVA COMMAND IN TXT DOCUMENT 
+```
+cd /
+```
+```
+bash matlab.sh
+```
+
 
 
 * saving images if you need
@@ -588,7 +615,7 @@ diff -ru "matlabCS_Linux/partie_1.m" matlabCS_Windows/partie_1.m
 +image = dlmread('finalOutput.csv');
 Only in matlabCS_Windows: test.txt
 ```
-MODIFICATION 2 : javaLauncher*.m
+MODIFICATION 2 : java*Launcher.m
 
 For finding eclise commande : </br>
 In RUN / RUN CONFIGURATIONS... / SHOW COMMAND LINE (in eclpise) </br>
