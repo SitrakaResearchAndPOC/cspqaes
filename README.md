@@ -475,6 +475,25 @@ docker restart cspqaes
 cd /root/eclipse-workspace/
 ```
 ```
+wget https://raw.githubusercontent.com/Safidiko/AES-PQAES/main/Article4_QuantumCipherMode2.zip
+```
+```
+unzip Article4_QuantumCipherMode2.zip
+```
+```
+cd /
+```
+Launch eclipse
+```
+bash eclipse.sh
+```
+For finding eclise commande : </br>
+In RUN / RUN CONFIGURATIONS... / SHOW COMMAND LINE (in eclpise) </br>
+Full command java should be replaced as sprintf on MATLAB code 
+```
+cd /usr/local/MATLAB/R2018b/bin/
+```
+```
 wget https://raw.githubusercontent.com/SitrakaResearchAndPOC/cspqaes/refs/heads/main/CS_v1/matlabCS_Linux.zip
 ```
 ```
