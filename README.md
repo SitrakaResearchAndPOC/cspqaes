@@ -10,6 +10,7 @@ docker image pull ubuntu:18.04
 ```
 docker images
 ```
+OR
 ```
 docker image ls
 ```
