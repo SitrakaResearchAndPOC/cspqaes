@@ -526,6 +526,10 @@ cd /
 ```
 bash matlab.sh
 ```
+Go to matlabCS_Linux/partie_1.m </br>
+Replace all SimulCS by matlabCS_Linux </br>
+Launch partie_1.m</br>
+
 
 
 
