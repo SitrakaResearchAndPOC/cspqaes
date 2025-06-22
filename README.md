@@ -11,7 +11,7 @@ docker image pull ubuntu:18.04
 docker images
 ```
 ```
-docker image ps
+docker image ls
 ```
 change name_session with realusername , for me it's dast, use this [link](https://stackoverflow.com/questions/3522341/identify-user-in-a-bash-script-called-by-sudo)
 ```
