@@ -251,6 +251,9 @@ cd ../../..
 
 * Installing [ECLIPSE](https://www.tecmint.com/eclipse-install-ubuntu/) or [ECLIPSE2](https://www.makeuseof.com/install-eclipse-ide-on-linux/)
 ```
+cd /
+```
+```
 apt install default-jre
 ```
 ```
@@ -291,6 +294,9 @@ chmod +x eclipse.sh
 ```
 ```
 exit
+```
+```
+xhost +
 ```
 ```
 docker exec -ti cspqaes bash eclipse.sh
@@ -376,7 +382,13 @@ create bash scripting for matlab
 exit 
 ```
 ```
+xhost +
+```
+```
 docker exec -ti cspqaes bash
+```
+```
+cd /
 ```
 ```
 nano matlab.sh
@@ -395,6 +407,9 @@ chmod +x matlab.sh
 exit 
 ```
 ```
+xhost +
+```
+```
 docker exec -ti cspqaes bash matlab.sh
 ```
 If problem displaying plot exist, restart docker : 
@@ -408,6 +423,13 @@ docker restart cspqaes
 ```
 docker commit cspqaes  cspqaes:v1 
 ```
+* IMAGE CS-PQAES v1
+
+```
+
+```
+
+
 
 
 * BONUS , INSTALLING ECLIPSE ON REAL MACHINE NOT DOCKER
