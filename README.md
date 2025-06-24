@@ -235,7 +235,8 @@ python3 AES.py -d test.txt.aes -c 128
 ```
 
 </br>
-Tape not overwrite </br>
+The file "test.txt" already exists. Overwrite? [y/n] </br>
+Tape n </br>
 The name of decrypted file as test_dec.txt </br>
 </br>
 
@@ -256,8 +257,9 @@ python3 FO.py -d test.txt.fo -a sha256 -k bob.priv
 ```
 
 </br>
-Tape not overwrite </br>
-The name of decrypted file as test_fo.txt </br>
+The file "test.txt" already exists. Overwrite? [y/n] </br>
+Tape  n </br>
+The name of decrypted file as <pre style="white-space:nowrap;">test_fo.txt</pre> </br>
 </br>
 
 ```
@@ -272,7 +274,7 @@ Tape ctrl+C to break the console terminal
 python3 PQAES.py
 ```
 ```
-cd ../../..
+cd ../../../..
 ```
 
 
