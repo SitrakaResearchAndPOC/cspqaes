@@ -233,13 +233,16 @@ python3 AES.py -e test.txt -c 128
 ```
 python3 AES.py -d test.txt.aes -c 128
 ```
+
 </br>
 Tape not overwrite </br>
 The name of decrypted file as test_dec.txt </br>
 </br>
+
 ```
 tail -f test_dec.txt
 ```
+
 ```
 python3 FO.py 
 ```
