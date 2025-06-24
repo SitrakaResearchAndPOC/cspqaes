@@ -513,7 +513,7 @@ INSERT ALSO IN RUN : RUN / RUN CONFIGURATIONS / JAVA APPLICATION / MAIN / ADD PR
 
 
 For finding eclise commande : </br>
-In RUN / RUN CONFIGURATIONS... / SHOW COMMAND LINE (in eclpise) </br>
+In RUN / RUN CONFIGURATIONS/JAVA APPLICATION/ ARGUMENTS / SHOW COMMAND LINE (maybe need to run the mainclass in eclpise) </br>
 COPY LONGUE JAVA COMMAND IN TXT DOCUMENT Something Like  :  </br>
 /root/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.15.v20250423-0846/jre/bin/java </br>
 </br>
