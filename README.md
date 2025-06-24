@@ -31,6 +31,10 @@ xhost +
 ```
 docker exec -ti cspqaes bash
 ```
+Verify if the number of the directory on container is more less than ubuntu desktop
+```
+dir
+```
 ```
 apt update
 ```
