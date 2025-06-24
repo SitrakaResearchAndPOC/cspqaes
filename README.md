@@ -249,13 +249,16 @@ python3 FO.py -e test.txt -a sha256 -k bob.priv
 ```
 python3 FO.py -d test.txt.fo -a sha256 -k bob.priv 
 ```
+
 </br>
 Tape not overwrite </br>
 The name of decrypted file as test_fo.txt </br>
-</br
+</br>
+
 ```
 tail -f test_fo.txt
 ```
+
 * CHECK PQAES
 ```
 python3 PQAES.py
