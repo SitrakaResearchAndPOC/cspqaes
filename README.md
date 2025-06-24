@@ -243,6 +243,8 @@ The name of decrypted file as test_dec.txt </br>
 tail -f test_dec.txt
 ```
 
+Tape ctrl+C to break the console terminal
+
 ```
 python3 FO.py 
 ```
@@ -261,6 +263,9 @@ The name of decrypted file as test_fo.txt </br>
 ```
 tail -f test_fo.txt
 ```
+
+Tape ctrl+C to break the console terminal
+
 
 * CHECK PQAES
 ```
