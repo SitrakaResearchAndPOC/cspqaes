@@ -508,6 +508,7 @@ bash eclipse.sh
 ```
 Import eclipse project</br></br>
 FILE / IMPORT / GENERAL / EXISTING PROJECT INTO WORKSPACE / BROWSE / SELECT Article4_QuantumCipherMode2  / OPEN
+INSERT ALSO IN RUN : RUN / RUN CONFIGURATIONS / JAVA APPLICATION / MAIN / ADD PROJECT --> so add Article4_QuantumCipherMode2
 </br>
 
 
