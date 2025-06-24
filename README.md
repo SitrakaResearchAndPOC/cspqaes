@@ -199,13 +199,13 @@ rm -rf *.pub *.priv *.key
 python3 keygen_csidh_sibc.py -n alice
 ```
 ```
-ls
+ls alice*
 ```
 ```
 python3 keygen_csidh_sibc.py -n bob
 ```
 ```
-ls
+ls bob*
 ```
 ```
 python3 shared_csidh_sibc.py -p alice.pub -s bob.priv -k key1.key
