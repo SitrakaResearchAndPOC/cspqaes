@@ -590,32 +590,14 @@ wget https://raw.githubusercontent.com/SitrakaResearchAndPOC/cspqaes/refs/heads/
 ```
 unzip matlabCS2_Linux2.zip
 ```
-COPY THE OUTPUT
-```
-find ~/.p2 -type f -name java
-```
-```
-nano javaCipheringLauncher.m
-```
-Full command java should be replaced as sprintf on MATLAB code by PASTING LONGUE JAVA COMMAND COPYING BEFORE </br>
-Tape ctrl+x  and yes for saving
-COPY THE OUTPUT
-```
-find ~/.p2 -type f -name java
-```
-```
-nano javaDecipheringLauncher.m
-```
-Full command java should be replaced as sprintf on MATLAB code by PASTING LONGUE JAVA COMMAND COPYING BEFORE </br>
-Tape ctrl+x  and yes for saving
 ```
 bash /matlab.sh
 ```
-
 Select matlabCS2_Linux2 </br>
 Open bloc_emission.m and bloc_reception.m </br>
 </br>
 Run bloc_emission.m </br>
+CLOSE MATLAB  </br>
 ```
 cd /usr/local/MATLAB/R2018b/bin/matlabCS2_Linux/Resultat_Emission
 ```
@@ -623,6 +605,7 @@ cd /usr/local/MATLAB/R2018b/bin/matlabCS2_Linux/Resultat_Emission
 xdg-open <image>
 ```
 Run bloc_reception.m </br>
+CLOSE MATLAB  </br>
 ```
 cd /usr/local/MATLAB/R2018b/bin/matlabCS2_Linux/Resultat_Reception
 ```
@@ -630,13 +613,10 @@ cd /usr/local/MATLAB/R2018b/bin/matlabCS2_Linux/Resultat_Reception
 xdg-open <image>
 ```
 
-
-
 * saving images if you need
 ```
 docker commit cspqaes  cspqaes:v1 
 ```
-
 
 * LINKS
 
