@@ -498,6 +498,22 @@ xhost +
 ```
 docker restart cspqaes 
 ```
+* Cleaning CSPQAES code :
+```
+cd /root/eclipse-workspace/
+```
+```
+rm -rf *
+```
+```
+cd /usr/local/MATLAB/R2018b/bin/
+```
+```
+dir
+```
+```
+rm -rf matlabCS*
+```
 
 * Insertion of code version matlabCS_v1 (the compressive sensing is not so performed)
 ```
