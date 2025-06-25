@@ -1,0 +1,218 @@
+diff -ru matlabCS2_Windows/bloc_emission.m matlabCS2_Linux/bloc_emission.m
+--- matlabCS2_Windows/bloc_emission.m	2025-06-23 19:43:28.071163636 +0300
++++ matlabCS2_Linux/bloc_emission.m	2025-06-23 20:36:46.418502976 +0300
+@@ -1,9 +1,9 @@
+ %% Lab 1:
+-imagePath = '.\images\Fleur.jpg';
++imagePath = './images/Fleur.jpg';
+ imgOrg    = double(imread(imagePath));
+ 
+ %% Choix du Mode: Real ou Simulated
+-typeMode = Mode.Simulated;
++typeMode = Mode.Real;
+ %% Paramètres à transferer au destinataire:
+ [ligne,colonne,profondeur] = size(imgOrg); 
+ TS                         = 25;
+@@ -12,8 +12,8 @@
+ 
+ %% Ciphering parameters:
+ cipherValue           = 4;
+-binPath               = 'D:\ECLIPSE_PROJECT\Article4_QuantumCipherMode2\bin';
+-cipherClass           = 'main_pkg.Main';
++binPath               = '/root/eclipse-workspace/Article4_QuantumCipherMode2/bin';
++cipherClass           = 'main_pkg.Cipher';
+ cipherModes           = {'AES','PQAES_SHA','PQAES_SHA3','PQAES_KECCAK','PQAES_SHAKE'};
+ cipherMode            = cipherModes{cipherValue};
+ 
+@@ -105,7 +105,7 @@
+ %% ECRITURE DANS INPUT JAVA DE LA MATRICE QUANITFIE:
+ input_image_name = 'image.csv';
+ parent           = cd(input_java);
+-writematrix(image_collapse,input_image_name);
++dlmwrite(input_image_name, image_collapse);
+ cd(parent);
+ %% ********************** CHEMIN DE L'IMAGE QUANTIFIE**********************
+ chemin_image_quantifie            = appendToPath(input_java,input_image_name);
+@@ -121,7 +121,7 @@
+ %% ******************** READ CIPHERED IMAGE OUTPUT BY JAVA ******************** 
+ chemin_image_chiffree = appendToPath(output_java,'imageCiphered');
+ parent = cd(chemin_image_chiffree);
+-imageCiphered = readmatrix('imageCiphered.csv');
++imageCiphered = dlmread('imageCiphered.csv');
+ cd(parent);
+ % 
+ %% *********************** 1 PLAN -> 3 PLANS *****************************%
+@@ -136,7 +136,7 @@
+     - nombres de colonnes : même que celui de l'image compressé 
+ %}
+ %% ************************** STEGANOGRAPHIE*****************************%%
+-image_hote  = imread('.\images\Léna.png');
++image_hote  =  imread('./images/Lena.png');
+ n = 4;
+ image_stego= stegaInsertLSB(image_hote,imgCiphered,n);
+ 
+@@ -157,7 +157,7 @@
+ 
+ timestamp = datestr(now,'ddmmyyyy_HHMMSS');
+ image_name = sprintf('image_%s.png',timestamp);
+-imwrite(image_stego,sprintf('%s\\%s',dossier_des_resultats,image_name));
++imwrite(image_stego,sprintf('%s/%s',dossier_des_resultats,image_name));
+ %% ************************* COMPARAISON IMAGE HOTE VS IMG STEGO *********%%
+ if typeMode==Mode.Simulated
+     imageComparator(image_hote,image_stego,'Stéganography');
+@@ -171,15 +171,15 @@
+ 
+ 
+ % % sur l'image source:
+-save(sprintf("%s\\%s",dossier_param,'imageSouceParameters.mat'),'ligne','colonne','profondeur','compressive_ratio','sampling_distance','cipherMode','imagePath');
++save(sprintf("%s/%s",dossier_param,'imageSouceParameters.mat'),'ligne','colonne','profondeur','compressive_ratio','sampling_distance','cipherMode','imagePath');
+ % % valeur du hash:
+-save(sprintf("%s\\%s",dossier_param,'hashImage.mat'),'hash');
++save(sprintf("%s/%s",dossier_param,'hashImage.mat'),'hash');
+ % valeur des paramètres initiaux:
+-save(sprintf("%s\\%s",dossier_param,'initialParameters.mat'),'S');
++save(sprintf("%s/%s",dossier_param,'initialParameters.mat'),'S');
+ % valeurs min et max de la quantification:
+-save(sprintf("%s\\%s",dossier_param,'quantification.mat'),'maxMin');
++save(sprintf("%s/%s",dossier_param,'quantification.mat'),'maxMin');
+ % le nom de fichier où image stégo est enregistré:
+-save(sprintf("%s\\%s",dossier_param,'imageStegoInfo.mat'),'dossier_des_resultats','image_name','n');
++save(sprintf("%s/%s",dossier_param,'imageStegoInfo.mat'),'dossier_des_resultats','image_name','n');
+ % 
+ cd ..
+ %% ************************************************************************
+\ No newline at end of file
+diff -ru matlabCS2_Windows/bloc_reception.m matlabCS2_Linux/bloc_reception.m
+--- matlabCS2_Windows/bloc_reception.m	2025-06-23 19:43:28.071163636 +0300
++++ matlabCS2_Linux/bloc_reception.m	2025-06-23 20:44:58.664240196 +0300
+@@ -6,7 +6,7 @@
+ output_java   = appendToPath(repertoire_courant,'output_java');
+ 
+ %% Choix du Mode: Real ou Simulated
+-typeMode = Mode.Simulated;
++typeMode = Mode.Real;
+ 
+ %% LOADING DES PARAMETRES:
+ 
+@@ -14,13 +14,13 @@
+ 
+ % ligne, colonne, profondeur,
+ % compressive_ratio,sampling_distance,cipherMode
+-load(sprintf("%s\\%s",dossier_param,'imageSouceParameters.mat'));
++load(sprintf("%s/%s",dossier_param,'imageSouceParameters.mat'));
+ % hash
+-load(sprintf("%s\\%s",dossier_param,'hashImage.mat'));
++load(sprintf("%s/%s",dossier_param,'hashImage.mat'));
+ % S
+-load(sprintf("%s\\%s",dossier_param,'initialParameters.mat'));
++load(sprintf("%s/%s",dossier_param,'initialParameters.mat'));
+ % Quantification:[Maxmin]
+-load(sprintf("%s\\%s",dossier_param,'quantification.mat'));
++load(sprintf("%s/%s",dossier_param,'quantification.mat'));
+ %% ***********************************************************************
+ 
+ %% CALCUL DES PARAMETRES INITIAUX:
+@@ -46,8 +46,8 @@
+ 
+ %% ************************************************************************
+ %% STEGANOGRAPHIE - EXTRACTION
+-load(sprintf("%s\\%s",dossier_param,'imageStegoInfo.mat'));
+-imgStego = imread(sprintf('%s\\%s',dossier_des_resultats,image_name));
++load(sprintf("%s/%s",dossier_param,'imageStegoInfo.mat'));
++imgStego = imread(sprintf('%s/%s',dossier_des_resultats,image_name));
+ dim = [ligne_cr,colonne,profondeur];
+ imgRec = stegaExtractLSB(imgStego,dim,n);
+ 
+@@ -59,12 +59,12 @@
+ %% ********************************************************************** %
+ chemin_image_a_dechiffrer = appendToPath(repertoire_courant,'imageToDecipher');
+ parent                    = cd(chemin_image_a_dechiffrer);
+-writematrix(imgCollapse,'imageToDecipher.csv');
++dlmwrite('imageToDecipher.csv', imgCollapse);
+ cd(parent)
+ chemin_image_a_dechiffrer_java = appendToPath(chemin_image_a_dechiffrer,'imageToDecipher.csv');
+ 
+ %% PARAMETRES JAVA
+-binPath        = 'D:\ECLIPSE_PROJECT\Article4_QuantumCipherMode2\bin';
++binPath        = '/root/eclipse-workspace/Article4_QuantumCipherMode2/bin';
+ decipherClass  = 'main_pkg.DeCipher';
+ cipheringType  = cipherMode;
+ %% ****************************** MISE EN QUOTE ET DOUBLE SLASH **********%
+@@ -77,7 +77,7 @@
+ %% *********************** LECTURE DU FINAL OUTPUT ***********************%
+ chemin_final_output = appendToPath(output_java,'finalOutput');
+ parent = cd(chemin_final_output);
+-image_collapse = readmatrix('finalOutput.csv');
++image_collapse = dlmread('finalOutput.csv');
+ cd(parent);
+ 
+ %% ************************** REDECOUPER EN 3 PLANS **********************%
+diff -ru matlabCS2_Windows/imageToDecipher/imageToDecipher.csv matlabCS2_Linux/imageToDecipher/imageToDecipher.csv
+--- matlabCS2_Windows/imageToDecipher/imageToDecipher.csv	2025-06-23 19:43:28.087176196 +0300
++++ matlabCS2_Linux/imageToDecipher/imageToDecipher.csv	2025-06-23 20:45:00.944219300 +0300
+@@ -1,768 +1,768 @@
+
+Only in matlabCS2_Linux/images: Lena.png
+Only in matlabCS2_Windows/images: Léna.png
+diff -ru matlabCS2_Windows/initialParameters.m matlabCS2_Linux/initialParameters.m
+--- matlabCS2_Windows/initialParameters.m	2025-06-23 19:43:28.075166776 +0300
++++ matlabCS2_Linux/initialParameters.m	2025-06-23 19:47:53.306954176 +0300
+@@ -5,13 +5,13 @@
+ % S          : vecteur colonne [x_0',y_0',g_0',r']
+  sommeTotale =0;
+ for jj =1:32
+-    sommeTotale = sommeTotale +binaryVectorToDecimal(P(jj,:))*2^(8*(jj-1))/2^256;
++    sommeTotale = sommeTotale +bin2dec(num2str((P(jj,:))))*2^(8*(jj-1))/2^256;
+ end
+ %% Matrice q[x_0, y_0,r,z_0]
+ q=zeros(4,1);
+ for ii = 1:4
+-    terme_1 = (binaryVectorToDecimal(P(4*ii-2,:)) + (4*ii-2))/( binaryVectorToDecimal(P(3*ii,:)) + 3*ii);
+-    terme_2 = (binaryVectorToDecimal(P(5*ii-3,:)) + (5*ii - 3))/( binaryVectorToDecimal(P(4*ii,:)) + 4*ii);
++    terme_1 = (bin2dec(num2str(P(4*ii-2,:))) + (4*ii-2))/( bin2dec(num2str(P(3*ii,:))) + 3*ii);
++    terme_2 = (bin2dec(num2str(P(5*ii-3,:))) + (5*ii - 3))/( bin2dec(num2str(P(4*ii,:))) + 4*ii);
+     q(ii,:) = mod((S(ii,:)+(terme_1 + terme_2)*sommeTotale),1);
+ end
+ end
+\ No newline at end of file
+diff -ru matlabCS2_Windows/input_java/image.csv matlabCS2_Linux/input_java/image.csv
+--- matlabCS2_Windows/input_java/image.csv	2025-06-23 19:43:28.087176196 +0300
++++ matlabCS2_Linux/input_java/image.csv	2025-06-23 20:37:15.270537092 +0300
+
+diff -ru matlabCS2_Windows/javaCipheringLauncher.m matlabCS2_Linux/javaCipheringLauncher.m
+--- matlabCS2_Windows/javaCipheringLauncher.m	2025-06-23 19:43:28.075166776 +0300
++++ matlabCS2_Linux/javaCipheringLauncher.m	2025-06-23 19:57:10.629289008 +0300
+@@ -1,6 +1,6 @@
+ function javaCipheringLauncher(binPath,className,cipherType,input_path,output_path,ligne,colonne)
+ %% PARAMETERS TO CHANGE: 
+-    command = sprintf('java -cp %s %s %s %s %s %d %d',binPath, className,cipherType,input_path,output_path,ligne,colonne);
++    command = sprintf('/root/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.11.v20240426-1830/jre/bin/java -cp %s %s %s %s %s %d %d',binPath, className,cipherType,input_path,output_path,ligne,colonne);
+     [~,s] = system(command);
+     disp(s)
+ end
+diff -ru matlabCS2_Windows/javaDecipheringLauncher.m matlabCS2_Linux/javaDecipheringLauncher.m
+--- matlabCS2_Windows/javaDecipheringLauncher.m	2025-06-23 19:43:28.075166776 +0300
++++ matlabCS2_Linux/javaDecipheringLauncher.m	2025-06-23 19:53:31.411475707 +0300
+@@ -7,6 +7,6 @@
+ % ligne = 192;
+ % colonne = 256;
+ 
+-command = sprintf('java -cp %s %s %s %s %s %d %d',binPath, decipherClass,cipheringType,parametersPath,imToDecipherPath,ligne,colonne);
++command = sprintf('/root/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.11.v20240426-1830/jre/bin/java -cp %s %s %s %s %s %d %d',binPath, decipherClass,cipheringType,parametersPath,imToDecipherPath,ligne,colonne);
+ [r,s] = system(command);
+ disp(s)
+\ No newline at end of file
+diff -ru matlabCS2_Windows/output_java/cle/cle.dat matlabCS2_Linux/output_java/cle/cle.dat
+--- matlabCS2_Windows/output_java/cle/cle.dat	2025-06-23 19:43:28.087176196 +0300
++++ matlabCS2_Linux/output_java/cle/cle.dat	2025-06-23 20:37:15.926537551 +0300
+@@ -1 +1 @@
+-s\F3\9C\ACQ\ECNL*\AE\94\FF\F8v\BF\C2G3\F1\E7\8EEf\88\9D-\8A2IH\FAp\F5|\F0\9F\DE\EFIԎ\A3@\B8\82\EC\CC4G\C9XXpYz=)
+\ No newline at end of file
++\B3z\A6\9E\BE\85\92X '6o\B0O?
+g\C9&\BB\99Hu\FF\D25\C2\D2!
+\ No newline at end of file
+diff -ru matlabCS2_Windows/output_java/finalOutput/finalOutput.csv matlabCS2_Linux/output_java/finalOutput/finalOutput.csv
+--- matlabCS2_Windows/output_java/finalOutput/finalOutput.csv	2025-06-23 19:43:28.087176196 +0300
++++ matlabCS2_Linux/output_java/finalOutput/finalOutput.csv	2025-06-23 20:45:02.004209560 +0300
+@@ -1,768 +1,768 @@
+

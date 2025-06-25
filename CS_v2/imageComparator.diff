@@ -1,0 +1,248 @@
+Binary files imageComparator_ok/appdesigner/appModel.mat and imageComparator_not_ok/appdesigner/appModel.mat differ
+diff -ru imageComparator_ok/matlab/document.xml imageComparator_not_ok/matlab/document.xml
+--- imageComparator_ok/matlab/document.xml	2024-07-20 21:08:28.000000000 +0300
++++ imageComparator_not_ok/matlab/document.xml	2024-07-20 21:08:28.000000000 +0300
+@@ -3,11 +3,6 @@
+     % Properties that correspond to app components
+     properties (Access = public)
+         UIFigure            matlab.ui.Figure
+-        UIAxeDiagonal       matlab.ui.control.UIAxes
+-        UIAxeVertical       matlab.ui.control.UIAxes
+-        UIAxeHorizontal     matlab.ui.control.UIAxes
+-        UIAxes2             matlab.ui.control.UIAxes
+-        UIAxes              matlab.ui.control.UIAxes
+         SSIMEdit            matlab.ui.control.NumericEditField
+         SSIMLabel           matlab.ui.control.Label
+         MSEEdit             matlab.ui.control.NumericEditField
+@@ -15,6 +10,11 @@
+         PSNREdit            matlab.ui.control.NumericEditField
+         PSNREditFieldLabel  matlab.ui.control.Label
+         Title               matlab.ui.control.Label
++        UIAxeDiagonal       matlab.ui.control.UIAxes
++        UIAxeVertical       matlab.ui.control.UIAxes
++        UIAxeHorizontal     matlab.ui.control.UIAxes
++        UIAxes2             matlab.ui.control.UIAxes
++        UIAxes              matlab.ui.control.UIAxes
+     end
+ 
+     
+@@ -38,6 +38,7 @@
+     end
+     
+ 
++    % Callbacks that handle component events
+     methods (Access = private)
+ 
+         % Code that executes after component creation
+@@ -104,34 +105,71 @@
+              % s3.MarkerFaceColor = [0 0.4470 0.7410];
+         end
+ 
+-        % Callback function: UIAxes
++        % Button down function: UIAxes
+         function UIAxesButtonDown(app, event)
+             histogramApp(app.Img1);
+         end
+ 
+-        % Callback function: UIAxes2
++        % Button down function: UIAxes2
+         function UIAxes2ButtonDown(app, event)
+             histogramApp(app.Img2);
+         end
+     end
+ 
+-    % App initialization and construction
++    % Component initialization
+     methods (Access = private)
+ 
+         % Create UIFigure and components
+         function createComponents(app)
+ 
+-            % Create UIFigure
+-            app.UIFigure = uifigure;
++            % Create UIFigure and hide until all components are created
++            app.UIFigure = uifigure('Visible', 'off');
+             app.UIFigure.Position = [100 100 662 521];
+             app.UIFigure.Name = 'MATLAB App';
+ 
++            % Create SSIMEdit
++            app.SSIMEdit = uieditfield(app.UIFigure, 'numeric');
++            app.SSIMEdit.Position = [494 260 100 22];
++
++            % Create SSIMLabel
++            app.SSIMLabel = uilabel(app.UIFigure);
++            app.SSIMLabel.HorizontalAlignment = 'right';
++            app.SSIMLabel.Position = [444 260 35 22];
++            app.SSIMLabel.Text = 'SSIM';
++
++            % Create MSEEdit
++            app.MSEEdit = uieditfield(app.UIFigure, 'numeric');
++            app.MSEEdit.Position = [298 260 100 22];
++
++            % Create MSELabel
++            app.MSELabel = uilabel(app.UIFigure);
++            app.MSELabel.HorizontalAlignment = 'right';
++            app.MSELabel.Position = [251 260 32 22];
++            app.MSELabel.Text = 'MSE';
++
++            % Create PSNREdit
++            app.PSNREdit = uieditfield(app.UIFigure, 'numeric');
++            app.PSNREdit.Position = [115 260 100 22];
++
++            % Create PSNREditFieldLabel
++            app.PSNREditFieldLabel = uilabel(app.UIFigure);
++            app.PSNREditFieldLabel.HorizontalAlignment = 'right';
++            app.PSNREditFieldLabel.Position = [61 260 39 22];
++            app.PSNREditFieldLabel.Text = 'PSNR';
++
++            % Create Title
++            app.Title = uilabel(app.UIFigure);
++            app.Title.BackgroundColor = [0.8 0.8 0.8];
++            app.Title.HorizontalAlignment = 'center';
++            app.Title.FontName = 'Times New Roman';
++            app.Title.FontSize = 20;
++            app.Title.FontWeight = 'bold';
++            app.Title.FontAngle = 'italic';
++            app.Title.Position = [166 482 339 25];
++
+             % Create UIAxeDiagonal
+             app.UIAxeDiagonal = uiaxes(app.UIFigure);
+             title(app.UIAxeDiagonal, 'Diagonal')
+-            xlabel(app.UIAxeDiagonal, '')
+-            ylabel(app.UIAxeDiagonal, '')
+-            zlabel(app.UIAxeDiagonal, '')
+             app.UIAxeDiagonal.XTick = [0 100 200 300];
+             app.UIAxeDiagonal.XTickLabel = {'0'; '100'; '200'; '300'};
+             app.UIAxeDiagonal.YTick = [0 100 200 300];
+@@ -141,9 +179,6 @@
+             % Create UIAxeVertical
+             app.UIAxeVertical = uiaxes(app.UIFigure);
+             title(app.UIAxeVertical, 'Vertical')
+-            xlabel(app.UIAxeVertical, '')
+-            ylabel(app.UIAxeVertical, '')
+-            zlabel(app.UIAxeVertical, '')
+             app.UIAxeVertical.PlotBoxAspectRatio = [1 1.21538461538462 1];
+             app.UIAxeVertical.XTick = [0 100 200 300];
+             app.UIAxeVertical.XTickLabel = {'0'; '100'; '200'; '300'};
+@@ -154,9 +189,6 @@
+             % Create UIAxeHorizontal
+             app.UIAxeHorizontal = uiaxes(app.UIFigure);
+             title(app.UIAxeHorizontal, 'Horizontal')
+-            xlabel(app.UIAxeHorizontal, '')
+-            ylabel(app.UIAxeHorizontal, '')
+-            zlabel(app.UIAxeHorizontal, '')
+             app.UIAxeHorizontal.PlotBoxAspectRatio = [1 1.21538461538462 1];
+             app.UIAxeHorizontal.XTick = [0 100 200 300];
+             app.UIAxeHorizontal.XTickLabel = {'0'; '100'; '200'; '300'};
+@@ -167,72 +199,32 @@
+             % Create UIAxes2
+             app.UIAxes2 = uiaxes(app.UIFigure);
+             title(app.UIAxes2, 'Image 2')
+-            xlabel(app.UIAxes2, '')
+-            ylabel(app.UIAxes2, '')
+-            zlabel(app.UIAxes2, '')
+-            app.UIAxes2.GridColor = 'none';
+             app.UIAxes2.XColor = 'none';
+             app.UIAxes2.YColor = 'none';
++            app.UIAxes2.GridColor = 'none';
++            app.UIAxes2.ButtonDownFcn = createCallbackFcn(app, @UIAxes2ButtonDown, true);
+             app.UIAxes2.Position = [330 297 300 185];
+ 
+             % Create UIAxes
+             app.UIAxes = uiaxes(app.UIFigure);
+             title(app.UIAxes, 'Image 1')
+-            xlabel(app.UIAxes, '')
+-            ylabel(app.UIAxes, '')
+-            zlabel(app.UIAxes, '')
+             app.UIAxes.XColor = 'none';
+             app.UIAxes.YColor = 'none';
++            app.UIAxes.ButtonDownFcn = createCallbackFcn(app, @UIAxesButtonDown, true);
+             app.UIAxes.Position = [21 297 300 185];
+ 
+-            % Create SSIMEdit
+-            app.SSIMEdit = uieditfield(app.UIFigure, 'numeric');
+-            app.SSIMEdit.Position = [494 260 100 22];
+-
+-            % Create SSIMLabel
+-            app.SSIMLabel = uilabel(app.UIFigure);
+-            app.SSIMLabel.HorizontalAlignment = 'right';
+-            app.SSIMLabel.Position = [444 260 35 22];
+-            app.SSIMLabel.Text = 'SSIM';
+-
+-            % Create MSEEdit
+-            app.MSEEdit = uieditfield(app.UIFigure, 'numeric');
+-            app.MSEEdit.Position = [298 260 100 22];
+-
+-            % Create MSELabel
+-            app.MSELabel = uilabel(app.UIFigure);
+-            app.MSELabel.HorizontalAlignment = 'right';
+-            app.MSELabel.Position = [251 260 32 22];
+-            app.MSELabel.Text = 'MSE';
+-
+-            % Create PSNREdit
+-            app.PSNREdit = uieditfield(app.UIFigure, 'numeric');
+-            app.PSNREdit.Position = [115 260 100 22];
+-
+-            % Create PSNREditFieldLabel
+-            app.PSNREditFieldLabel = uilabel(app.UIFigure);
+-            app.PSNREditFieldLabel.HorizontalAlignment = 'right';
+-            app.PSNREditFieldLabel.Position = [61 260 39 22];
+-            app.PSNREditFieldLabel.Text = 'PSNR';
+-
+-            % Create Title
+-            app.Title = uilabel(app.UIFigure);
+-            app.Title.BackgroundColor = [0.8 0.8 0.8];
+-            app.Title.HorizontalAlignment = 'center';
+-            app.Title.FontName = 'Times New Roman';
+-            app.Title.FontSize = 20;
+-            app.Title.FontWeight = 'bold';
+-            app.Title.FontAngle = 'italic';
+-            app.Title.Position = [166 482 339 25];
++            % Show the figure after all components are created
++            app.UIFigure.Visible = 'on';
+         end
+     end
+ 
++    % App creation and deletion
+     methods (Access = public)
+ 
+         % Construct app
+         function app = imageComparator(varargin)
+ 
+-            % Create and configure components
++            % Create UIFigure and components
+             createComponents(app)
+ 
+             % Register the app with App Designer
+diff -ru imageComparator_ok/metadata/appMetadata.xml imageComparator_not_ok/metadata/appMetadata.xml
+--- imageComparator_ok/metadata/appMetadata.xml	2024-07-20 21:08:28.000000000 +0300
++++ imageComparator_not_ok/metadata/appMetadata.xml	2024-07-20 21:08:28.000000000 +0300
+@@ -1 +1 @@
+-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?><metadata xmlns="http://schemas.mathworks.com/appDesigner/app/2017/appMetadata"><description></description><MLAPPVersion>2</MLAPPVersion><minimumSupportedMATLABRelease>R2018a</minimumSupportedMATLABRelease><screenshotMode>auto</screenshotMode><uuid>3a2cb114-83b6-47e1-a8a9-a2c08a814316</uuid></metadata>
+\ No newline at end of file
++<?xml version="1.0" encoding="UTF-8" standalone="yes" ?><metadata xmlns="http://schemas.mathworks.com/appDesigner/app/2017/appMetadata"><description></description><MLAPPVersion>2</MLAPPVersion><minimumSupportedMATLABRelease>R2018a</minimumSupportedMATLABRelease><screenshotMode>auto</screenshotMode><uuid>3a2cb114-83b6-47e1-a8a9-a2c08a814316</uuid><AppType>Standard</AppType><componentProducts/></metadata>
+\ No newline at end of file
+diff -ru imageComparator_ok/metadata/coreProperties.xml imageComparator_not_ok/metadata/coreProperties.xml
+--- imageComparator_ok/metadata/coreProperties.xml	2024-07-20 21:08:28.000000000 +0300
++++ imageComparator_not_ok/metadata/coreProperties.xml	2024-07-20 21:08:28.000000000 +0300
+@@ -1 +1 @@
+-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?><cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcmitype="http://purl.org/dc/dcmitype/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><dcterms:created xsi:type="dcterms:W3CDTF">2024-07-20T18:08:28Z</dcterms:created><dc:creator></dc:creator><dc:description></dc:description><dcterms:modified xsi:type="dcterms:W3CDTF">2025-06-24T01:18:25Z</dcterms:modified><dc:title>imageComparator</dc:title><cp:version>1.0</cp:version></cp:coreProperties>
+\ No newline at end of file
++<?xml version="1.0" encoding="UTF-8" standalone="yes" ?><cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcmitype="http://purl.org/dc/dcmitype/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><dcterms:created xsi:type="dcterms:W3CDTF">2024-07-20T18:08:28Z</dcterms:created><dc:creator></dc:creator><dc:description></dc:description><dcterms:modified xsi:type="dcterms:W3CDTF">2025-06-11T16:48:27Z</dcterms:modified><dc:title>imageComparator</dc:title><cp:version>1.0</cp:version></cp:coreProperties>
+\ No newline at end of file
+diff -ru imageComparator_ok/metadata/mwcorePropertiesExtension.xml imageComparator_not_ok/metadata/mwcorePropertiesExtension.xml
+--- imageComparator_ok/metadata/mwcorePropertiesExtension.xml	2024-07-20 21:08:28.000000000 +0300
++++ imageComparator_not_ok/metadata/mwcorePropertiesExtension.xml	2024-07-20 21:08:28.000000000 +0300
+@@ -1 +1 @@
+-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?><mwcoreProperties xmlns="http://schemas.mathworks.com/package/2014/corePropertiesExtension"><matlabVersion>9.5.0.921823</matlabVersion></mwcoreProperties>
+\ No newline at end of file
++<?xml version="1.0" encoding="UTF-8" standalone="yes" ?><mwcoreProperties xmlns="http://schemas.mathworks.com/package/2014/corePropertiesExtension"><matlabVersion>9.9.0.1444674</matlabVersion><uuid>804c5a46-4ac8-4e3f-bc78-29436b4c8848</uuid></mwcoreProperties>
+\ No newline at end of file
+diff -ru imageComparator_ok/metadata/mwcoreProperties.xml imageComparator_not_ok/metadata/mwcoreProperties.xml
+--- imageComparator_ok/metadata/mwcoreProperties.xml	2024-07-20 21:08:28.000000000 +0300
++++ imageComparator_not_ok/metadata/mwcoreProperties.xml	2024-07-20 21:08:28.000000000 +0300
+@@ -1 +1 @@
+-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?><mwcoreProperties xmlns="http://schemas.mathworks.com/package/2012/coreProperties"><contentType>application/vnd.mathworks.matlab.app</contentType><contentTypeFriendlyName>MATLAB App</contentTypeFriendlyName><matlabRelease>R2018b</matlabRelease></mwcoreProperties>
+\ No newline at end of file
++<?xml version="1.0" encoding="UTF-8" standalone="yes" ?><mwcoreProperties xmlns="http://schemas.mathworks.com/package/2012/coreProperties"><contentType>application/vnd.mathworks.matlab.app</contentType><contentTypeFriendlyName>MATLAB App</contentTypeFriendlyName><matlabRelease>R2020b</matlabRelease></mwcoreProperties>
+\ No newline at end of file
