@@ -325,6 +325,13 @@ cd /root/eclipse/java-2023-06/eclipse/
 chmod +x eclipse.sh
 ```
 ```
+cp eclipse.sh /root/eclipse/java-2023-06/eclipse/
+```
+```
+cp eclipse.sh root/eclipse-workspace/
+```
+
+```
 exit
 ```
 ```
@@ -463,6 +470,9 @@ cd /usr/local/MATLAB/R2018b/bin/
 chmod +x matlab.sh
 ```
 ```
+cp matlab.sh /usr/local/MATLAB/R2018b/bin/
+```
+```
 exit 
 ```
 ```
@@ -489,29 +499,28 @@ xhost +
 docker restart cspqaes 
 ```
 
-* Insertion of code version 1
+* Insertion of code version matlabCS_v1 (the compressive sensing is not so performed)
 ```
 cd /root/eclipse-workspace/
 ```
+Inspired at [quantum_cipher](https://raw.githubusercontent.com/Safidiko/AES-PQAES/main/Article4_QuantumCipherMode2.zip) the main.java should be renamed as Cipher.java for having the version on [my_repo](https://raw.githubusercontent.com/SitrakaResearchAndPOC/cspqaes/refs/heads/main/PostQuantumCryptography/Article4_QuantumCipherMode2.zip)
 ```
-wget https://raw.githubusercontent.com/Safidiko/AES-PQAES/main/Article4_QuantumCipherMode2.zip
+wget https://raw.githubusercontent.com/SitrakaResearchAndPOC/cspqaes/refs/heads/main/PostQuantumCryptography/Article4_QuantumCipherMode2.zip
 ```
 ```
 unzip Article4_QuantumCipherMode2.zip
 ```
-```
-cd /
-```
 Launch eclipse
 ```
-bash eclipse.sh
+bash /eclipse.sh
 ```
 Import eclipse project</br></br>
 FILE / IMPORT / GENERAL / EXISTING PROJECT INTO WORKSPACE / BROWSE / SELECT Article4_QuantumCipherMode2  / OPEN
 INSERT ALSO IN RUN : RUN / RUN CONFIGURATIONS / JAVA APPLICATION / MAIN / ADD PROJECT --> so add Article4_QuantumCipherMode2
 </br>
-
-
+</br>
+RUN TO JAVA CODE at /Article4_QuantumCipherMode2/src/main_pkg/ : Cipher.java and Decipher.java
+</br>
 For finding eclise commande : </br>
 In RUN / RUN CONFIGURATIONS/JAVA APPLICATION/ ARGUMENTS / SHOW COMMAND LINE (maybe need to run the mainclass in eclpise) </br>
 COPY LONGUE JAVA COMMAND IN TXT DOCUMENT Something Like  :  </br>
@@ -539,15 +548,69 @@ nano javaDecipheringLauncher.m
 ```
 Full command java should be replaced as sprintf on MATLAB code by PASTING LONGUE JAVA COMMAND IN TXT DOCUMENT 
 ```
-cd /
-```
-```
-bash matlab.sh
+bash /matlab.sh
 ```
 Go to matlabCS_Linux/partie_1.m </br>
 Replace all SimulCS by matlabCS_Linux </br>
 Launch partie_1.m</br>
 Exit all GUI</br>
+
+* Insertion of code version matlabCS_v2 (good performance of compressive sensing)
+Launch eclipse
+```
+bash /eclipse.sh
+```
+Import eclipse project</br></br>
+FILE / IMPORT / GENERAL / EXISTING PROJECT INTO WORKSPACE / BROWSE / SELECT Article4_QuantumCipherMode2  / OPEN
+INSERT ALSO IN RUN : RUN / RUN CONFIGURATIONS / JAVA APPLICATION / MAIN / ADD PROJECT --> so add Article4_QuantumCipherMode2
+</br>
+
+
+For finding eclise commande : </br>
+In RUN / RUN CONFIGURATIONS/JAVA APPLICATION/ ARGUMENTS / SHOW COMMAND LINE (maybe need to run the mainclass in eclpise) </br>
+COPY LONGUE JAVA COMMAND IN TXT DOCUMENT Something Like  :  </br>
+/root/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.15.v20250423-0846/jre/bin/java </br>
+</br>
+Exit all eclipse GUI </br>
+```
+cd /usr/local/MATLAB/R2018b/bin/
+```
+```
+wget https://raw.githubusercontent.com/SitrakaResearchAndPOC/cspqaes/refs/heads/main/CS_v2/matlabCS2_Linux2.zip
+```
+```
+unzip matlabCS2_Linux2.zip
+```
+```
+nano javaCipheringLauncher.m
+```
+Full command java should be replaced as sprintf on MATLAB code by PASTING LONGUE JAVA COMMAND IN TXT DOCUMENT 
+```
+nano javaDecipheringLauncher.m
+```
+Full command java should be replaced as sprintf on MATLAB code by PASTING LONGUE JAVA COMMAND IN TXT DOCUMENT 
+
+```
+bash /matlab.sh
+```
+
+Select matlabCS2_Linux2 </br>
+Open bloc_emission.m and bloc_reception.m </br>
+</br>
+Run bloc_emission.m </br>
+```
+cd /usr/local/MATLAB/R2018b/bin/matlabCS2_Linux/Resultat_Emission
+```
+```
+xdg-open <image>
+```
+Run bloc_reception.m </br>
+```
+cd /usr/local/MATLAB/R2018b/bin/matlabCS2_Linux/Resultat_Reception
+```
+```
+xdg-open <image>
+```
 
 
 
