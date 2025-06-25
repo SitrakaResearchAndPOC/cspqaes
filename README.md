@@ -539,6 +539,7 @@ For finding eclipse commande : </br>
 In RUN / RUN CONFIGURATIONS/JAVA APPLICATION/ ARGUMENTS / SHOW COMMAND LINE (maybe need to run the mainclass in eclpise) </br></br>
 COPY LONGUE JAVA COMMAND IN TXT DOCUMENT Something Like  :  </br>
 /root/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.15.v20250423-0846/jre/bin/java </br>
+OR USE COMMAND : find ~/.p2 -type f -name java
 </br>
 Exit all eclipse GUI </br>
 ```
@@ -580,11 +581,6 @@ INSERT ALSO IN RUN : RUN / RUN CONFIGURATIONS / JAVA APPLICATION / MAIN / ADD PR
 </br>
 
 
-For finding eclise commande : </br>
-In RUN / RUN CONFIGURATIONS/JAVA APPLICATION/ ARGUMENTS / SHOW COMMAND LINE (maybe need to run the mainclass in eclpise) </br>
-COPY LONGUE JAVA COMMAND IN TXT DOCUMENT Something Like  :  </br>
-/root/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_17.0.15.v20250423-0846/jre/bin/java </br>
-</br>
 Exit all eclipse GUI </br>
 ```
 cd /usr/local/MATLAB/R2018b/bin/
@@ -595,15 +591,24 @@ wget https://raw.githubusercontent.com/SitrakaResearchAndPOC/cspqaes/refs/heads/
 ```
 unzip matlabCS2_Linux2.zip
 ```
+COPY THE OUTPUT
+```
+find ~/.p2 -type f -name java
+```
 ```
 nano javaCipheringLauncher.m
 ```
-Full command java should be replaced as sprintf on MATLAB code by PASTING LONGUE JAVA COMMAND IN TXT DOCUMENT 
+Full command java should be replaced as sprintf on MATLAB code by PASTING LONGUE JAVA COMMAND COPYING BEFORE </br>
+Tape ctrl+x  and yes for saving
+COPY THE OUTPUT
+```
+find ~/.p2 -type f -name java
+```
 ```
 nano javaDecipheringLauncher.m
 ```
-Full command java should be replaced as sprintf on MATLAB code by PASTING LONGUE JAVA COMMAND IN TXT DOCUMENT 
-
+Full command java should be replaced as sprintf on MATLAB code by PASTING LONGUE JAVA COMMAND COPYING BEFORE </br>
+Tape ctrl+x  and yes for saving
 ```
 bash /matlab.sh
 ```
