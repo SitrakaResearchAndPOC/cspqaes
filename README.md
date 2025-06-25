@@ -532,8 +532,9 @@ bash /eclipse.sh
 ```
 Import eclipse project</br></br>
 FILE / IMPORT / GENERAL / EXISTING PROJECT INTO WORKSPACE / BROWSE / SELECT Article4_QuantumCipherMode2  / OPEN </br> </br>
-INSERT ALSO IN RUN : RUN / RUN CONFIGURATIONS / JAVA APPLICATION / MAIN / ADD PROJECT --> so add Article4_QuantumCipherMode2 </br> </br>
-RUN TO JAVA CODE at /Article4_QuantumCipherMode2/src/main_pkg/ : Cipher.java and Decipher.java </br></br>
+RUN TO JAVA CODE at /Article4_QuantumCipherMode2/src/main_pkg/ : Cipher.java and Decipher.java </br>
+IF ANY PROBLEM WHEN LAUNCHING Cipher.java & Dechipher.java : INSERT ALSO IN RUN : RUN / RUN CONFIGURATIONS / JAVA APPLICATION / MAIN / ADD PROJECT --> so add Article4_QuantumCipherMode2 </br> </br>
+
 For finding eclipse commande : </br>
 In RUN / RUN CONFIGURATIONS/JAVA APPLICATION/ ARGUMENTS / SHOW COMMAND LINE (maybe need to run the mainclass in eclpise) </br></br>
 COPY LONGUE JAVA COMMAND IN TXT DOCUMENT Something Like  :  </br>
